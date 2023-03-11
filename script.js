@@ -156,6 +156,7 @@ boutonGenerer.addEventListener('click', () => {
     if (messageNonSelection() && controleCorrespondance() && controleSaisi()) {
         tabElements()
     }
+    
 })
 
 
@@ -172,11 +173,17 @@ genererTop.addEventListener('mouseout', () => {
 
 //copy password
 clipboard.addEventListener('click', () => {
+
+    if(generer.textContent==0){
+        copy_text.textContent = "Rien à copier";
+        copy_text.style.backgroundColor="red"
+    }else{
     navigator.clipboard.writeText(generer.innerText);
     copy_text.textContent = "Password copied";
+    copy_text.style.backgroundColor="green"
     copy_text.style.display = "block";
+    }
     setTimeout(() => {
         copy_text.style.display = "none";
-    }, 3000);
-    copy_text.style.transition = "2s"
+    }, 4000);
 });
